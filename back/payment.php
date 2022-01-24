@@ -31,7 +31,8 @@
               <i class="far fa-sort text-info far fs-6 fa-sort me-3  d-sm-block "></i>
             </div>
             <hr>
-            <table class="table table-borderless">
+            <div class="table-responsive">
+            <table class="table table-borderless table-hover">
                 <thead>
                   <tr>
                     <th scope="col" class="text-muted">Name</th>
@@ -63,7 +64,7 @@
                   ?>
                 </tbody>
               </table>
-              
+              </div>
 
             </div>
                 </div> 

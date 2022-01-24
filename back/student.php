@@ -33,39 +33,40 @@
             </div>
             </div>
             <hr>
-            <table class="table table-borderless table-collapse align-middle">
-                <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col" class="text-muted" >Name</th>
-                    <th scope="col" class="text-muted">Email</th>
-                    <th scope="col" class="text-muted">phone</th>
-                    <th scope="col" class="text-muted">Enroll Number</th>
-                    <th scope="col" class="text-muted">Date of admission</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <?php
-                include 'studentlist.php'
-                ?>
-                <tbody>
-                  <?php
-                 foreach ($users as $user){
-                   echo "<tr class='bg-white'>
-                      <td><img src={$user['img']} class='rounded-circle'></td>
-                      <td>{$user['name']}</td>
-                      <td>{$user['email']}</td>
-                      <td>{$user['phone']}</td>
-                      <td>{$user['enroll number']}</td>
-                      <td>{$user['date of admission']}</td>
-                      <td><i class='fal fa-pen text-info'></i><i class='fal fa-trash text-info mx-1'></i></td>
-                   </tr>";
-                 }
-                  ?>
-            
-                </tbody>
-              </table>
-              
+            <div class="table-responsive">
+                <table class="table table-borderless table-collapse align-middle table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col" class="text-muted" >Name</th>
+                        <th scope="col" class="text-muted">Email</th>
+                        <th scope="col" class="text-muted">phone</th>
+                        <th scope="col" class="text-muted">Enroll Number</th>
+                        <th scope="col" class="text-muted">Date of admission</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <?php
+                    include 'studentlist.php'
+                    ?>
+                    <tbody>
+                      <?php
+                    foreach ($users as $user){
+                      echo "<tr class='bg-white'>
+                          <td><img src={$user['img']} class='rounded-circle'></td>
+                          <td>{$user['name']}</td>
+                          <td>{$user['email']}</td>
+                          <td>{$user['phone']}</td>
+                          <td>{$user['enroll number']}</td>
+                          <td>{$user['date of admission']}</td>
+                          <td><i class='fal fa-pen text-info'></i><i class='fal fa-trash text-info mx-1'></i></td>
+                      </tr>";
+                    }
+                      ?>
+                
+                    </tbody>
+                  </table>
+              </div>
 
             </div>
                 </div> 

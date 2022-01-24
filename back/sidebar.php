@@ -8,7 +8,7 @@
                         <p class="text-info">Admin</p>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
                         <li class="nav-item mb-2">
-                            <a href="Dashbord.php" class=" sheet nav-link align-middle px-2 text-dark bg-info px-sm-2 py-1">
+                            <a href="dashbord.php" class=" sheet nav-link align-middle px-2 text-dark bg-info px-sm-2 py-1">
                                 <i class="fal fa-home-lg-alt "></i> <span class="ms-1 d-none d-sm-inline ">Home</span>
                             </a>
                         </li>
@@ -22,7 +22,7 @@
                                 <i class="fal fa-graduation-cap"></i> <span class="ms-1 d-none d-sm-inline">Students</span></a>
                         </li>
                         <li  class="nav-item mb-2">
-                            <a href="Payment.php"  class="nav-link px-0 align-middle text-dark">
+                            <a href="payment.php"  class="nav-link px-0 align-middle text-dark">
                                 <i class="fal fa-usd-square"></i> <span class="ms-1 d-none d-sm-inline">Payments</span></a>
                         </li>
                         <li  class="nav-item mb-2">
