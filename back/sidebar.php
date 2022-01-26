@@ -6,9 +6,9 @@
                         <img src="https://picsum.photos/70.jpg" alt="Profile"  class="rounded-circle"><br>
                         <span class="adm text-dark">Admin Name</span>
                         <p class="text-info">Admin</p>
-                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
+                <ul class="my-list nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
                         <li class="nav-item mb-2">
-                            <a href="dashbord.php" class=" sheet nav-link align-middle px-2 text-dark bg-info px-sm-2 py-1">
+                            <a href="dashbord.php" class=" sheet nav-link align-middle px-2 text-dark  px-sm-2 py-1">
                                 <i class="fal fa-home-lg-alt "></i> <span class="ms-1 d-none d-sm-inline ">Home</span>
                             </a>
                         </li>
@@ -38,5 +38,5 @@
                             <a href="index.php" class="nav-link px-0 align-middle text-dark">
                              <span class="ms-1 d-none d-sm-inline">Logout</span><i class="fas fa-sign-out-alt px-sm-2"></i> </a>
                         </li>
-                    </ul>
+                </ul>
                  </div>
