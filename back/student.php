@@ -53,7 +53,7 @@
                       <?php
                     foreach ($users as $user){
                       echo "<tr class='bg-white'>
-                          <td><img src={$user['img']} class='rounded-circle'></td>
+                          <td><img alt=student-picture src={$user['img']} class='rounded-circle'></td>
                           <td>{$user['name']}</td>
                           <td>{$user['email']}</td>
                           <td>{$user['phone']}</td>
