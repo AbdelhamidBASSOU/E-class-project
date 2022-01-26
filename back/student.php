@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,700&display=swap" rel="stylesheet">
     <title>Students</title>
 </head>
+<main>
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">
@@ -79,4 +80,5 @@
 
 <script src="/Assets/bootstrap.bundle.min.js" ></script>   
 </body>
+                  </main>
 </html>
