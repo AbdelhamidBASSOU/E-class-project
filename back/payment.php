@@ -15,6 +15,7 @@
 </head>
 <main>
 <body>
+  
     <div class="container-fluid">
          <div class="row flex-nowrap">
            <?php
@@ -42,15 +43,19 @@
                     <th scope="col" class="text-muted">Amount Paid</th>
                     <th scope="col" class="text-muted">Balance amount</th>
                     <th scope="col" class="text-muted">Date </th>
-                    <th scope="col"></th>
+                    <th scope="col" class="text-muted">Actions </th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                include 'paymentlist.php'
+                
                 ?>
                 <tbody>
                   <?php
+                  $file=('payment.json');
+                  $data=file_get_contents($file);
+                  $users=json_decode($data,true);
                  foreach ($users as $user){
                    echo "<tr class='bg-white'>
                       <td>{$user['Name']}</td>
@@ -59,7 +64,11 @@
                       <td>{$user['Amount Paid']}</td>
                       <td>{$user['Balance amount']}</td>
                       <td>{$user['Date']}</td>
-                      <td><i class='fal fa-pen text-info'></i><i class='fal fa-trash text-info mx-1'></i></td>
+                      <td>
+                      <a href='view.php ' class='btn btn-sm btn-outline-info'>view</a>                          
+                      <a href='update.php ' class='btn btn-sm btn-outline-info'>update</a>
+                      <a href='delete.php ' class='btn btn-sm btn-outline-info'>delete</a>
+                      </td>
                    </tr>";
                  }
                   ?>

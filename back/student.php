@@ -30,7 +30,7 @@
               <h5 class="fw-bolder d-none d-sm-block mx-3">Students List</h5>
               <div class="d-flex align-items-center">
               <i class="far fa-sort text-info far fs-6 fa-sort me-3  d-sm-block"></i>
-              <button type="button" class="btn  bg-info text-white my-3">ADD NEW STUDENT</button>
+              <a href="addform.php" type="button" class="btn  bg-info text-white my-3">ADD NEW STUDENT</a>
             </div>
             </div>
             <hr>
@@ -44,23 +44,30 @@
                         <th scope="col" class="text-muted">phone</th>
                         <th scope="col" class="text-muted">Enroll Number</th>
                         <th scope="col" class="text-muted">Date of admission</th>
-                        <th scope="col"></th>
+                        <th scope="col" class="text-muted"> Actions</th>
                       </tr>
                     </thead>
                     <?php
-                    include 'studentlist.php'
+                    $file=('student.json');
+                    $data=file_get_contents($file);
+                    $users=json_decode($data,true);
                     ?>
                     <tbody>
                       <?php
                     foreach ($users as $user){
                       echo "<tr class='bg-white'>
-                          <td><img alt=student-picture src={$user['img']} class='rounded-circle'></td>
+                          <td><img alt=student-picture src={$user['img']} class='rounded-circle' style= 'width:60px; height:60px;'></td>
                           <td>{$user['name']}</td>
                           <td>{$user['email']}</td>
                           <td>{$user['phone']}</td>
                           <td>{$user['enroll number']}</td>
                           <td>{$user['date of admission']}</td>
-                          <td><i class='fal fa-pen text-info'></i><i class='fal fa-trash text-info mx-1'></i></td>
+                          <td>
+                          <a href='view.php' class='btn btn-sm btn-outline-info'>view</a>                          
+                          <a href='update.php' class='btn btn-sm btn-outline-info'>update</a>
+                          <a href='delete.php' class='btn btn-sm btn-outline-info'>delete</a>
+
+                          </td>
                       </tr>";
                     }
                       ?>
