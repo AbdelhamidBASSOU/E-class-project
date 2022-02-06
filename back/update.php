@@ -1,6 +1,11 @@
 <?php
 include_once 'db_connnection.php';
-$result = mysqli_query($conn,"SELECT * FROM student");
+if(count($_POST)>0) {
+mysqli_query($conn,"UPDATE student set img='" . $_POST['img'] . "', name='" . $_POST['name'] . "', email='" . $_POST['email'] . "' ,phone='" . $_POST['phone'] . "',enroll_number='".$_POST['enroll_number']. "' ,date_of_admission='" . $_POST['date_of_admission'] . "' WHERE id='" . $_POST['id'] . "'");
+$message = "Record Modified Successfully";
+}
+$result = mysqli_query($conn,"SELECT * FROM student WHERE id='" . $_GET['id'] . "'");
+$row= mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,44 +23,65 @@ $result = mysqli_query($conn,"SELECT * FROM student");
     <title>Students</title>
 </head>
 <body>
-<?php
-if (mysqli_num_rows($result) > 0) {
-?>
-<table>
-                     <tr>
-                        <th scope="col"></th>
-                        <th scope="col" class="text-muted" >Name</th>
-                        <th scope="col" class="text-muted">Email</th>
-                        <th scope="col" class="text-muted">phone</th>
-                        <th scope="col" class="text-muted">Enroll Number</th>
-                        <th scope="col" class="text-muted">Date of admission</th>
-                        <th scope="col" class="text-muted"> Actions</th>
-                      </tr>
-			<?php
-			$i=0;
-			while($row = mysqli_fetch_array($result)) {
-			?>
-	  <tr class='bg-white'>
-                          <td><img alt=student-picture src='<?php echo $row["img"]?>' class='rounded-circle' style= 'width:60px; height:60px;'></td>
-                          <td><?php echo $row["name"]?></td>
-                          <td><?php echo $row["email"]?></td>                          
-                          <td><?php echo $row["phone"]?></td>                          
-                          <td><?php echo $row["enroll_number"]?></td>
-                          <td><?php echo $row["date_of_admission"]?></td>    
-       </tr>
-		<td><a href="updateprocess.php?id=<?php echo $row["id"]; ?>">Update</a></td>
-      </tr>
-			<?php
-			$i++;
-			}
-			?>
-</table>
- <?php
-}
-else
-{
-    echo "No result found";
-}
-?>
- </body>
+<div class="container-fluid">
+         <div class="row flex-nowrap">
+           <?php
+           include 'sidebar.php'
+           ?>
+                
+         </div>
+        <div class="col">
+            <?php
+            include 'searchbar.php'
+            ?>
+            
+
+           
+         <?php if(isset($message)) { echo $message; } ?>
+             
+
+           
+          <form name="frmUser" method="post" action="">
+          <h1>Update</h1>
+            <fieldset>
+
+                  <div class="form-group">
+                   <label for="img">Entrez votre image</label>
+                   <input type="file" class="form-control" alt="profile picture"  name="img" value="<?php echo $row['img']?>">
+                 </div>  
+                 <div class="form-group">
+                   <label for="id">id</label>
+                   <input type="text" class="form-control" alt="id"  name="id" value="<?php echo $row['id']?>">
+                 </div>  
+                 <div class="form-group">
+                   <label for="name"> nom</label>
+                   <input type="text" class="form-control"  placeholder="Entrez votre nom" name="name" value="<?php echo $row['name']?>">
+                 </div>
+                 <div class="form-group">
+                   <label for="email"> email</label>
+                   <input type="email" class="form-control"  placeholder="user@email.com" name="email" value="<?php echo $row['email']?>">
+                 </div>
+                 <div class="form-group">
+                   <label for="phone"> phone</label>
+                   <input type="text" class="form-control"  placeholder="123XXXXXXXXXX" name="phone" value="<?php echo $row['phone']?>">
+                 </div>
+                 <div class="form-group">
+                   <label for="enroll_number"> enroll number</label>
+                   <input type="text" class="form-control"  placeholder="123XXXXXXXXXX" name="enroll_number" value="<?php echo $row['enroll_number']?>">
+                 </div>
+                 <div class="form-group">
+                   <label for="date_of_admission"> date d'admission</label>
+                   <input type="date" class="form-control"  placeholder="123XXXXXXXXXX" name="date_of_admission" value="<?php echo $row['date_of_admission']?>">
+                 </div>
+
+              <input id="submit"
+                 class="btn btn-info my-3 px-5" type="submit"
+                        name="submit" value="submit"
+                        onclick="on_submit()"> 
+</div>
+</fieldset>
+</form>
+</div>
+<script src="js/bootstrap.bundle.min.js" ></script> 
+</body>
 </html>

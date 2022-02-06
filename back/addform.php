@@ -25,7 +25,8 @@
             <?php
             include 'searchbar.php'
             ?>
-<h1>Formulaire d'ajout</h1>
+        
+              <h1>Formulaire d'ajout</h1>
              <form method="POST" action="add.php">
                <fieldset> 
                 <div class="form-group">
@@ -63,6 +64,8 @@
                  
                </fieldset>
              </form>
+             </div>
+           
 
 
 

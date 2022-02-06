@@ -25,7 +25,7 @@ require_once('db_connnection.php');
 		$img = $_REQUEST['img'];
         $id = $_REQUEST['id'];
         $name = $_REQUEST['name'];
-		$email = $_REQUEST['email'];
+		$email = $_REQUEST['email']; 
 		$phone = $_REQUEST['phone'];
 		$enroll_number = $_REQUEST['enroll_number'];
 		$date_of_admission = $_REQUEST['date_of_admission'];

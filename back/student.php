@@ -38,9 +38,9 @@ $result = mysqli_query($conn,"SELECT * FROM student");
             </div>
             </div>
             <hr>
-            <div class="table-responsive">
+            <div class="table-responsive " style="height:calc(100vh - 200px); overflow:auto;">
                 <table class="table table-borderless table-collapse align-middle table-hover">
-                    <thead>
+                    <thead class="sticky-top bg-light">
                       <tr>
                         <th scope="col"></th>
                         <th scope="col" class="text-muted" >Name</th>
@@ -67,8 +67,8 @@ $result = mysqli_query($conn,"SELECT * FROM student");
                           <td><?php echo $row["enroll_number"]?></td>
                           <td><?php echo $row["date_of_admission"]?></td>
                           <td><a href='view.php' class='btn btn-sm btn-outline-info'>view</a>                        
-                              <a href='update.php' class='btn btn-sm btn-outline-info'>update</a>
-                              <a href='delete.php' class='btn btn-sm btn-outline-info'>delete</a>
+                              <a href='update.php?id=<?php echo $row['id']?>' class='btn btn-sm btn-outline-info'>update</a>
+                              <a href='delete.php?id=<?php echo $row['id']?>' class='btn btn-sm btn-outline-info'>delete</a>
                           </td> 
 
                           

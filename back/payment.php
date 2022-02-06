@@ -1,11 +1,6 @@
 <?php
-require_once('db_connnection.php');
-$sql='SELECT * from `payment`';
-
-$query=$conn->prepare($sql);
-
-$query->execute();
-$users = $query->fetchALL(PDO::FETCH_ASSOC);
+include_once 'db_connnection.php';
+$result = mysqli_query($conn,"SELECT * FROM payment");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,74 +21,72 @@ $users = $query->fetchALL(PDO::FETCH_ASSOC);
 <body>
   
     <div class="container-fluid">
-         <div class="row flex-nowrap">
+        <div class="row flex-nowrap">
            <?php
            include 'sidebar.php'
            ?>
                 
-         </div>
+        </div>
         <div class="col">
             <?php
             include 'searchbar.php'
             ?>
-              <div class="bg-light div container-fluid">
+            <div class="bg-light div container-fluid">
                 <div class="d-flex align-items-center  justify-content-center justify-content-sm-between  mt-3">
-              <h5 class="fw-bolder d-none d-sm-block py-3">Payments</h5>
-              <i class="far fa-sort text-info far fs-6 fa-sort me-3  d-sm-block "></i>
-            </div>
-            <hr>
-            <div class="table-responsive">
-            <table class="table table-borderless table-hover">
-                <thead>
-                  <tr>
-                  <th scope="col" class="text-muted">id</th>
-                    <th scope="col" class="text-muted">Name</th>
-                    <th scope="col" class="text-muted" >Payment Schedule</th>
-                    <th scope="col" class="text-muted">Bill Number</th>
-                    <th scope="col" class="text-muted">Amount Paid</th>
-                    <th scope="col" class="text-muted">Balance amount</th>
-                    <th scope="col" class="text-muted">Date </th>
-                    <th scope="col" class="text-muted">Actions </th>
+                    <h5 class="fw-bolder d-none d-sm-block py-3">Payments</h5>
+                    <i class="far fa-sort text-info far fs-6 fa-sort me-3  d-sm-block "></i>
+                </div>
+                <hr>
+              <div class="table-responsive">
+                  <table class="table table-borderless table-hover">
+                      <thead>
+                        <tr>
+                        
+                          <th scope="col" class="text-muted">Name</th>
+                          <th scope="col" class="text-muted" >Payment Schedule</th>
+                          <th scope="col" class="text-muted">Bill Number</th>
+                          <th scope="col" class="text-muted">Amount Paid</th>
+                          <th scope="col" class="text-muted">Balance amount</th>
+                          <th scope="col" class="text-muted">Date </th>
+                          <th scope="col" class="text-muted">Actions </th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                      
+                      <tbody>
+                        <?php
                     
-                  </tr>
-                </thead>
-                <tbody>
-                
-                <tbody>
-                  <?php
-               
-                 foreach ($users as $user){
-                   echo "<tr class='bg-white'>
-                      <td>{$user['id']}</td>
-                      <td>{$user['Name']}</td>
-                      <td>{$user['payment_schedule']}</td>
-                      <td>{$user['bill_number']}</td>
-                      <td>{$user['Amount_paid']}</td>
-                      <td>{$user['balance_amount']}</td>
-                      <td>{$user['date']}</td>
-                      <td>
-                      <a href='view.php ' class='btn btn-sm btn-outline-info'>view</a>                          
-                      <a href='update.php ' class='btn btn-sm btn-outline-info'>update</a>
-                      <a href='delete.php ' class='btn btn-sm btn-outline-info'>delete</a>
-                      </td>
-                   </tr>";
-                 }
-                  ?>
-                </tbody>
-              </table>
+                          
+                        $i=0;
+                        while($row = mysqli_fetch_array($result)) {
+                        ?>
+                          <tr>
+                              <td><?php echo $row['Name']?></td>
+                              <td><?php echo $row['payment_schedule']?></td>
+                              <td><?php echo $row['bill_number']?></td>
+                              <td><?php echo $row['Amount_paid']?></td>
+                              <td><?php echo $row['balance_amount']?></td>
+                              <td><?php echo $row['date']?></td>                      
+                              <td>
+                              <a href='view.php ' class='btn btn-sm btn-outline-info'>view</a>                          
+                              <a href='update.php ' class='btn btn-sm btn-outline-info'>update</a>
+                              <a href='delete.php ' class='btn btn-sm btn-outline-info'>delete</a>
+                              </td>
+                          </tr>
+                      
+                        <?php
+                            $i++;
+                            }
+                          ?>
+                      </tbody>
+                    </table>
               </div>
 
             </div>
-                </div> 
-     </div> 
-              
- </div>
-    <?php
-    include 'db_connnection.php';
-    ?>
-    
-
-
+        </div> 
+    </div> 
+      
 <script src="/Assets/bootstrap.bundle.min.js" ></script>  
 </body>
                 </main>
