@@ -1,3 +1,12 @@
+<?php
+require_once('db_connnection.php');
+$sql='SELECT * from `payment`';
+
+$query=$conn->prepare($sql);
+
+$query->execute();
+$users = $query->fetchALL(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +46,7 @@
             <table class="table table-borderless table-hover">
                 <thead>
                   <tr>
+                  <th scope="col" class="text-muted">id</th>
                     <th scope="col" class="text-muted">Name</th>
                     <th scope="col" class="text-muted" >Payment Schedule</th>
                     <th scope="col" class="text-muted">Bill Number</th>
@@ -48,22 +58,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php
                 
-                ?>
                 <tbody>
                   <?php
-                  $file=('payment.json');
-                  $data=file_get_contents($file);
-                  $users=json_decode($data,true);
+               
                  foreach ($users as $user){
                    echo "<tr class='bg-white'>
+                      <td>{$user['id']}</td>
                       <td>{$user['Name']}</td>
-                      <td>{$user['Payment Schedule']}</td>
-                      <td>{$user['Bill Number']}</td>
-                      <td>{$user['Amount Paid']}</td>
-                      <td>{$user['Balance amount']}</td>
-                      <td>{$user['Date']}</td>
+                      <td>{$user['payment_schedule']}</td>
+                      <td>{$user['bill_number']}</td>
+                      <td>{$user['Amount_paid']}</td>
+                      <td>{$user['balance_amount']}</td>
+                      <td>{$user['date']}</td>
                       <td>
                       <a href='view.php ' class='btn btn-sm btn-outline-info'>view</a>                          
                       <a href='update.php ' class='btn btn-sm btn-outline-info'>update</a>
@@ -81,7 +88,9 @@
      </div> 
               
  </div>
-    
+    <?php
+    include 'db_connnection.php';
+    ?>
     
 
 

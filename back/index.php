@@ -15,6 +15,9 @@
     <title>login page</title>
   </head>
   <body>
+    <?php
+    include 'db_connnection.php'
+    ?>
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12 col-sm-6 col-md-4">
