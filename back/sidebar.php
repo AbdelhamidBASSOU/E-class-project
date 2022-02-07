@@ -4,8 +4,8 @@
                         <a class="navbar-brand text-black border-start border-3 border-info px-2 " href="#">E-Classe</a>
                          </div>
                         <img src="https://picsum.photos/70.jpg" alt="Profile"  class="rounded-circle"><br>
-                        <span class="adm text-dark">Admin Name</span>
-                        <p class="text-info font-weight-bold">Admin</p>
+                        
+                        <p class="text-dark font-weight-bold">Admin</p>
                 <ul class="my-list nav nav-pills flex-column d-flex justify-content-end " id="menu">
                         <li  class="nav-item mb-2 ps-4"style="width:170px;">
                             <a href="dashbord.php"  class="nav-link px-0 align-middle text-dark ps-4">
@@ -13,7 +13,7 @@
                 
                         </li>
                         <li  class="nav-item mb-2 ps-4"style="width:170px;">
-                            <a href="#submenu1"  class="nav-link px-0 align-middle text-dark ps-4">
+                            <a href="courses.php"  class="nav-link px-0 align-middle text-dark ps-4">
                                 <i class="fal fa-bookmark"></i> <span class="ms-1 d-none d-sm-inline">Cours</span> </a>
                 
                         </li>

@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,700&display=swap" rel="stylesheet">
-    <title>student</title>
+    <title>Courses</title>
 </head>
 <body>
 <div class="container-fluid">
@@ -26,35 +26,23 @@
             include 'searchbar.php'
             ?>
         
-              <h1>Formulaire d'ajout</h1>
-             <form method="POST" action="add.php">
+              <h1>Add course</h1>
+             <form method="POST" action="addcourse.php">
                <fieldset> 
                 <div class="form-group">
-                   <label for="img">Entrez votre image</label>
-                   <input type="file" class="form-control" alt="profile picture"  name="img">
+                   <label for="img">course image</label>
+                   <input type="file" class="form-control" alt="course picture"  name="img">
                  </div>  
                  <div class="form-group">
                    <input type="hidden" class="form-control" alt="id"  name="id">
                  </div>  
                  <div class="form-group">
                    <label for="name"> nom</label>
-                   <input type="text" class="form-control"  placeholder="Entrez votre nom" name="name">
+                   <input type="text" class="form-control"  placeholder="course name" name="name">
                  </div>
                  <div class="form-group">
-                   <label for="email"> email</label>
-                   <input type="email" class="form-control"  placeholder="user@email.com" name="email">
-                 </div>
-                 <div class="form-group">
-                   <label for="phone"> phone</label>
-                   <input type="text" class="form-control"  placeholder="123XXXXXXXXXX" name="phone">
-                 </div>
-                 <div class="form-group">
-                   <label for="enroll_number"> enroll number</label>
-                   <input type="text" class="form-control"  placeholder="123XXXXXXXXXX" name="enroll_number">
-                 </div>
-                 <div class="form-group">
-                   <label for="date_of_admission"> date d'admission</label>
-                   <input type="date" class="form-control"  placeholder="123XXXXXXXXXX" name="date_of_admission">
+                   <label for="link"> link</label>
+                   <input type="link" class="form-control"  placeholder="https://www.xxxxxx0x" name="link">
                  </div>
                  <input id="submit"
                  class="btn btn-info my-3 px-5" type="submit"
