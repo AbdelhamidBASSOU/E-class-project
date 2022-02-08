@@ -5,7 +5,7 @@
                          </div>
                         <img src="https://picsum.photos/70.jpg" alt="Profile"  class="rounded-circle"><br>
                         
-                        <p class="text-dark font-weight-bold">Admin</p>
+                        <p class="text-info font-weight-bold">Admin</p>
                 <ul class="my-list nav nav-pills flex-column d-flex justify-content-end " id="menu">
                         <li  class="nav-item mb-2 ps-4"style="width:170px;">
                             <a href="dashbord.php"  class="nav-link px-0 align-middle text-dark ps-4">

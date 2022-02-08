@@ -1,7 +1,7 @@
 <?php
 include_once 'db_connnection.php';
 if(count($_POST)>0) {
-mysqli_query($conn,"UPDATE courses set img='" . $_POST['img'] . "', id='" . $_POST['id'] . "', name='" . $_POST['name'] . "' ,link='" . $_POST['link'] . "'");
+mysqli_query($conn,"UPDATE courses set img='" . $_POST['img'] . "', name='" . $_POST['name'] . "' ,link='" . $_POST['link'] . "'");
 $message = "Record Modified Successfully";
 }
 $result = mysqli_query($conn,"SELECT * FROM courses WHERE id='" . $_GET['id'] . "'");
@@ -50,8 +50,7 @@ $row= mysqli_fetch_array($result);
                    <input type="file" class="form-control" alt="course picture"  name="img" value="<?php echo $row['img']?>">
                  </div>  
                  <div class="form-group">
-                   <label for="id">id</label>
-                   <input type="text" class="form-control" alt="id"  name="id" value="<?php echo $row['id']?>">
+                   <input type="hidden" class="form-control" alt="id"  name="id" value="<?php echo $row['id']?>">
                  </div>  
                  <div class="form-group">
                    <label for="name"> nom</label>

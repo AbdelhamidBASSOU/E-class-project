@@ -21,27 +21,27 @@ require_once('db_connnection.php');
 				. mysqli_connect_error());
 		}
 		
-		// Taking all 5 values from the form data(input)
-		$img = $_REQUEST['img'];
-        $id = $_REQUEST['id'];
-        $name = $_REQUEST['name'];
-		$link = $_REQUEST['link']; 
-		
-		// Performing insert query execution
-		// here our table name is college
-		$sql = "INSERT INTO courses VALUES ('$img','$id','$name',
-			'$link')";
-		
-		if(mysqli_query($conn, $sql)){
-			
-                    header("location:courses.php");
-		} else{
-			echo "ERROR: Hush! Sorry $sql. "
-				. mysqli_error($conn);
+		if(isset($_POST['submit']))
+		{
+		print_r($_FILES['img']);
+        
+        //$id = $_POST['id'];
+		$img=$_FILES['img']['name'];
+		if(!file_exists('./img/')){
+			mkdir('./img/');
 		}
-		
-		// Close connection
-		mysqli_close($conn);
+		move_uploaded_file($_FILES['img']['tmp_name'],'./img/'.$_FILES['img']['name']);
+        $id = $_POST['id'];
+		$name = $_POST['name']; 
+		$link = $_POST['link'];
+		$enroll_number = $_POST['enroll_number'];
+		$date_of_admission = $_POST['date_of_admission'];
+        $sql = "INSERT INTO courses (img,id,name,link) 
+		VALUES  ('$img','$id','$name','$link')";
+		mysqli_query($conn, $sql);
+		header('location:courses.php');
+		}
+		// Taking all 5 values from the form data(input)
 		?>
 	</center>
 </body>

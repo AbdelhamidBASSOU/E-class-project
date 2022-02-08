@@ -60,18 +60,16 @@ $result = mysqli_query($conn,"SELECT * FROM student");
                       ?>
                     
                      <tr class='bg-white'>
-                          <td><img alt=student-picture src='<?php echo $row["img"]?>' class='rounded-circle' style= 'width:60px; height:60px;'></td>
+                          <td><img alt=student-picture src='./img/<?php echo $row["img"]?>' class='rounded-circle' style= 'width:60px; height:60px;'></td>
                           <td><?php echo $row["name"]?></td>
                           <td><?php echo $row["email"]?></td>                          
                           <td><?php echo $row["phone"]?></td>                          
                           <td><?php echo $row["enroll_number"]?></td>
                           <td><?php echo $row["date_of_admission"]?></td>
-                          <td><a href='view.php' class='btn btn-sm btn-outline-info'>view</a>                        
-                              <a href='update.php?id=<?php echo $row['id']?>' class='btn btn-sm btn-outline-info'>update</a>
-                              <a href='delete.php?id=<?php echo $row['id']?>' class='btn btn-sm btn-outline-info'>delete</a>
+                          <td>                    
+                              <a href='update.php?id=<?php echo $row['id']?>'><i class="fal fa-pen text-info"></i></a>
+                              <a href='delete.php?id=<?php echo $row['id']?>'><i class ="fal fa-trash text-info mx-1"></i></a>
                           </td> 
-
-                          
                       </tr>
                       <?php
                        $i++;

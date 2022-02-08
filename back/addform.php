@@ -27,15 +27,12 @@
             ?>
         
               <h1>Formulaire d'ajout</h1>
-             <form method="POST" action="add.php">
+             <form method="POST" enctype="multipart/form-data" action="add.php">
                <fieldset> 
                 <div class="form-group">
                    <label for="img">Entrez votre image</label>
                    <input type="file" class="form-control" alt="profile picture"  name="img">
-                 </div>  
-                 <div class="form-group">
-                   <input type="hidden" class="form-control" alt="id"  name="id">
-                 </div>  
+                 </div>   
                  <div class="form-group">
                    <label for="name"> nom</label>
                    <input type="text" class="form-control"  placeholder="Entrez votre nom" name="name">

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Insert  page</title>
+	<title>Insert Course page</title>
 </head>
 
 <body>
@@ -13,7 +13,7 @@ require_once('db_connnection.php');
 		// username => root
 		// password => empty
 		// database name => staff
-		$conn = mysqli_connect("localhost", "root", "", "e_class_db");
+		
 		
 		// Check connection
 		if($conn === false){
@@ -22,35 +22,46 @@ require_once('db_connnection.php');
 		}
 		
 		// Taking all 5 values from the form data(input)
-		$img = $_REQUEST['img'];
-        $id = $_REQUEST['id'];
-        $name = $_REQUEST['name'];
-		$email = $_REQUEST['email']; 
-		$phone = $_REQUEST['phone'];
-		$enroll_number = $_REQUEST['enroll_number'];
-		$date_of_admission = $_REQUEST['date_of_admission'];
+		
+		
 		
 		// Performing insert query execution
 		// here our table name is college
-		$sql = "INSERT INTO student VALUES ('$img','$id','$name',
-			'$email','$phone','$enroll_number','$date_of_admission')";
+		if(isset($_POST['submit']))
+		{
+		print_r($_FILES['img']);
+        
+        //$id = $_POST['id'];
+		$img=$_FILES['img']['name'];
+		if(!file_exists('./img/')){
+			mkdir('./img/');
+		}
+		move_uploaded_file($_FILES['img']['tmp_name'],'./img/'.$_FILES['img']['name']);
+        $name = $_POST['name'];
+		$email = $_POST['email']; 
+		$phone = $_POST['phone'];
+		$enroll_number = $_POST['enroll_number'];
+		$date_of_admission = $_POST['date_of_admission'];
+        $sql = "INSERT INTO student (img,name,email,phone,enroll_number,date_of_admission) 
+		VALUES  ('$img','$name','$email','$phone','$enroll_number','$date_of_admission')";
+		mysqli_query($conn, $sql);
+		header('location:student.php');
+		}
 		
-		if(mysqli_query($conn, $sql)){
-			echo "<h3>data stored in a database successfully."
-				. " Please browse your localhost php my admin"
-				. " to view the updated data</h3>";
-
-			echo nl2br("\n$img\n$id\n$name\n $email\n "
-				. "$phone\n $enroll_number\n $date_of_admission");
+		  
+		/*if(mysqli_query($conn, $sql)){
+			
 		} else{
 			echo "ERROR: Hush! Sorry $sql. "
 				. mysqli_error($conn);
 		}
 		
 		// Close connection
-		mysqli_close($conn);
+		mysqli_close($conn);*/
 		?>
 	</center>
 </body>
 
 </html>
+
+		

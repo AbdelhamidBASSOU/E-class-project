@@ -42,7 +42,7 @@ $result = mysqli_query($conn,"SELECT * FROM courses");
                 <table class="table table-borderless table-collapse align-middle table-hover">
                     <thead class="sticky-top bg-light">
                       <tr>
-                        <th scope="col">picture</th>
+                        <th scope="col">img</th>
                         <th scope="col" class="text-muted">id</th>
                         <th scope="col" class="text-muted">name</th>
                         <th scope="col" class="text-muted">link</th>
@@ -58,13 +58,13 @@ $result = mysqli_query($conn,"SELECT * FROM courses");
                       ?>
                                
                      <tr class='bg-white'>
-                          <td><img alt=course-picture src='<?php echo $row["img"]?>' class='rounded-circle' style= 'width:60px; height:60px;'></td>
+                          <td><img alt=course-img src='./img/<?php echo $row["img"]?>' class='rounded-circle' style= 'width:60px; height:60px;'></td>
                           <td><?php echo $row["id"]?></td>
                           <td><?php echo $row["name"]?></td>                          
                           <td><?php echo $row["link"]?></td>                          
-                          <td><a href='view.php' class='btn btn-sm btn-outline-info'>view</a>                        
-                              <a href='updatecourse.php?id=<?php echo $row['id']?>' class='btn btn-sm btn-outline-info'>update</a>
-                              <a href='deletecourse.php?id=<?php echo $row['id']?>' class='btn btn-sm btn-outline-info'>delete</a>
+                          <td>                       
+                              <a href='updatecourse.php?id=<?php echo $row['id']?>'><i class="fal fa-pen text-info"> </i></a>
+                              <a href='deletecourse.php?id=<?php echo $row['id']?>'><i class="fal fa-trash text-info mx-1"></i></a>
                           </td> 
 
                           

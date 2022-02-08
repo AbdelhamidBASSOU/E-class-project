@@ -1,3 +1,13 @@
+<?php
+require_once 'db_connnection.php';
+$conn = new PDO('mysql:host=localhost;dbname=e_class_db;charset=utf8', 'root', '');
+$result=$conn->query("SELECT COUNT(*) FROM courses");
+$result->execute();
+$sum_students=$conn->query("SELECT COUNT(*) FROM student");
+$sum_students->execute();
+$sum_payments=$conn->query("SELECT SUM(Amount_paid) FROM payment");
+$sum_payments->execute();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +38,7 @@
                     <i class="fas fa-graduation-cap fs-1 px-3 py-3" ></i>
                     <span class="px-3 py-3" >Students</span>
                     <div class="card-body">
-                      <p class="card-text text-end">243</p>
+                      <p class="card-text text-end"><?php print_r($sum_students->fetchColumn()); ?></p>
                     </div>
                 </div>
                 </div>
@@ -37,7 +47,7 @@
                         <i class="fal fa-bookmark fs-1 px-3 py-3" ></i>
                         <span class="px-3 py-3">Course</span>
                         <div class="card-body">
-                          <p class="card-text text-end">13</p>
+                          <p class="card-text text-end"><?php print_r($result->fetchColumn()); ?></p>
                         </div>
                     </div>
                     </div>
@@ -46,7 +56,7 @@
                             <i class="fal fa-usd-square fs-1 px-3 py-3" ></i>
                             <span class="px-3 py-3" >Payments</a></span>
                             <div class="card-body">
-                              <p class="card-text text-end">556,000 DHS</p>
+                              <p class="card-text text-end">Dhs<?php print_r($sum_payments->fetchColumn()); ?></p>
                             </div>
                         </div>
                         </div>

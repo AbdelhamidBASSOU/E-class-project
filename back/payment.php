@@ -69,9 +69,8 @@ $result = mysqli_query($conn,"SELECT * FROM payment");
                               <td><?php echo $row['balance_amount']?></td>
                               <td><?php echo $row['date']?></td>                      
                               <td>
-                              <a href='view.php ' class='btn btn-sm btn-outline-info'>view</a>                          
-                              <a href='update.php ' class='btn btn-sm btn-outline-info'>update</a>
-                              <a href='delete.php ' class='btn btn-sm btn-outline-info'>delete</a>
+                              <a href='view.php'><i class="fal fa-eye text-info"></i></a>                          
+      
                               </td>
                           </tr>
                       
