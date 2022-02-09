@@ -33,13 +33,14 @@ $result = mysqli_query($conn,"SELECT * FROM payment");
             ?>
             <div class="bg-light div container-fluid">
                 <div class="d-flex align-items-center  justify-content-center justify-content-sm-between  mt-3">
-                    <h5 class="fw-bolder d-none d-sm-block py-3">Payments</h5>
-                    <i class="far fa-sort text-info far fs-6 fa-sort me-3  d-sm-block "></i>
-                </div>
+                <h5 class="fw-bolder d-none d-sm-block mx-3">Payment List</h5>
+              
+            </div>
                 <hr>
-              <div class="table-responsive">
-                  <table class="table table-borderless table-hover">
-                      <thead>
+                <div class="table-responsive " style="height:calc(100vh - 200px); overflow:auto;">
+                <table class="table table-borderless table-collapse align-middle table-hover">
+                    <thead class="sticky-top bg-light">
+                      
                         <tr>
                         
                           <th scope="col" class="text-muted">Name</th>
@@ -52,9 +53,8 @@ $result = mysqli_query($conn,"SELECT * FROM payment");
                           
                         </tr>
                       </thead>
-                      <tbody>
                       
-                      <tbody>
+                     <tbody>
                         <?php
                     
                           
