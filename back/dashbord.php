@@ -1,6 +1,6 @@
 <?php
 require_once 'db_connnection.php';
-$conn = new PDO('mysql:host=localhost;dbname=e_class_db;charset=utf8', 'root', '');
+$conn = new PDO('mysql:host=localhost;dbname=e_class_db;charset=utf8', 'root', 'JEchangedevie00');
 $result=$conn->query("SELECT COUNT(*) FROM courses");
 $result->execute();
 $sum_students=$conn->query("SELECT COUNT(*) FROM student");

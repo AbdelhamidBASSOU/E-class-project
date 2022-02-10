@@ -34,7 +34,9 @@ $result = mysqli_query($conn,"SELECT * FROM payment");
             <div class="bg-light div container-fluid">
                 <div class="d-flex align-items-center  justify-content-center justify-content-sm-between  mt-3">
                 <h5 class="fw-bolder d-none d-sm-block mx-3">Payment List</h5>
-              
+                <div class="d-flex align-items-center">
+              <i class="text-info  me-3 d-sm-block bg-info my-3"></i>
+            </div>
             </div>
                 <hr>
                 <div class="table-responsive " style="height:calc(100vh - 200px); overflow:auto;">

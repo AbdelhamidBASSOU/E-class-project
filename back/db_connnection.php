@@ -1,7 +1,7 @@
 <?php
 $servername='localhost';
 $username='root';
-$password='';
+$password='JEchangedevie00';
 $dbname = "e_class_db";
 $conn=mysqli_connect($servername,$username,$password,$dbname);
 if(!$conn){

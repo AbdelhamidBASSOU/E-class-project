@@ -26,7 +26,7 @@
             include 'searchbar.php'
             ?>
         
-              <h1>Add course</h1>
+              <h1>Add COURSE</h1>
              <form method="POST" action="addcourse.php" enctype="multipart/form-data">
                <fieldset> 
                 <div class="form-group">
