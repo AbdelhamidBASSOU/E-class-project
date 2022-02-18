@@ -1,11 +1,11 @@
 <?php
 include_once 'db_connnection.php';
 if(count($_POST)>0) {
-mysqli_query($conn,"UPDATE student set img='" . $_POST['img'] . "', name='" . $_POST['name'] . "', email='" . $_POST['email'] . "' ,phone='" . $_POST['phone'] . "',enroll_number='".$_POST['enroll_number']. "' ,date_of_admission='" . $_POST['date_of_admission'] . "' WHERE id='" . $_POST['id'] . "'");
-$message = "Record Modified Successfully";
+  mysqli_query($conn,"UPDATE student set img='" . $_POST['img'] . "', name='" . $_POST['name'] . "', email='" . $_POST['email'] . "' ,phone='" . $_POST['phone'] . "',enroll_number='".$_POST['enroll_number']. "' ,date_of_admission='" . $_POST['date_of_admission'] . "' WHERE id='" . $_POST['id'] . "'");
+    $message = "Record Modified Successfully";
 }
-$result = mysqli_query($conn,"SELECT * FROM student WHERE id='" . $_GET['id'] . "'");
-$row= mysqli_fetch_array($result);
+    $result = mysqli_query($conn,"SELECT * FROM student WHERE id='" . $_GET['id'] . "'");
+    $row= mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +27,9 @@ $row= mysqli_fetch_array($result);
          <div class="row flex-nowrap">
            <?php
            include 'sidebar.php'
-           ?>
-                
+           ?>     
          </div>
-        <div class="col">
+      <div class="col">
             <?php
             include 'searchbar.php'
             ?>
@@ -42,7 +41,7 @@ $row= mysqli_fetch_array($result);
 
            
           <form name="frmUser" method="post" action="">
-          <h1>Update</h1>
+            <h1>Update</h1>
             <fieldset>
 
                   <div class="form-group">
@@ -78,10 +77,10 @@ $row= mysqli_fetch_array($result);
                  class="btn btn-info my-3 px-5" type="submit"
                         name="submit" value="submit"
                         onclick="on_submit()"> 
-</div>
-</fieldset>
-</form>
-</div>
+
+            </fieldset>
+          </form>
+        </div>
 <script src="js/bootstrap.bundle.min.js" ></script> 
 </body>
 </html>

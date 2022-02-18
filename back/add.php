@@ -9,10 +9,6 @@
 	<center>
 		<?php
 require_once('db_connnection.php');
-		// servername => localhost
-		// username => root
-		// password => empty
-		// database name => staff
 		
 		
 		// Check connection
@@ -20,18 +16,10 @@ require_once('db_connnection.php');
 			die("ERROR: Could not connect. "
 				. mysqli_connect_error());
 		}
-		
-		// Taking all 5 values from the form data(input)
-		
-		
-		
-		// Performing insert query execution
-		// here our table name is college
 		if(isset($_POST['submit']))
 		{
 		print_r($_FILES['img']);
         
-        //$id = $_POST['id'];
 		$img=$_FILES['img']['name'];
 		if(!file_exists('./img/')){
 			mkdir('./img/');
@@ -48,17 +36,7 @@ require_once('db_connnection.php');
 		header('location:student.php');
 		}
 		
-		  
-		/*if(mysqli_query($conn, $sql)){
-			
-		} else{
-			echo "ERROR: Hush! Sorry $sql. "
-				. mysqli_error($conn);
-		}
-		
-		// Close connection
-		mysqli_close($conn);*/
-		?>
+			?>
 	</center>
 </body>
 

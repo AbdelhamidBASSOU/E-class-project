@@ -13,7 +13,7 @@ require_once('db_connnection.php');
 		// username => root
 		// password => empty
 		// database name => staff
-		$conn = mysqli_connect("localhost", "root", "", "e_class_db");
+		$conn = mysqli_connect("localhost", "root", "JEchangedevie00", "e_class_db");
 		
 		// Check connection
 		if($conn === false){

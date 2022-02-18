@@ -1,12 +1,14 @@
 <?php
-require_once 'db_connnection.php';
-$conn = new PDO('mysql:host=localhost;dbname=e_class_db;charset=utf8', 'root', 'JEchangedevie00');
-$result=$conn->query("SELECT COUNT(*) FROM courses");
-$result->execute();
-$sum_students=$conn->query("SELECT COUNT(*) FROM student");
-$sum_students->execute();
-$sum_payments=$conn->query("SELECT SUM(Amount_paid) FROM payment");
-$sum_payments->execute();
+    require_once 'db_connnection.php';
+   
+    $result=mysqli_query($conn,"SELECT COUNT(*) FROM courses");
+    $result=mysqli_fetch_column($result);
+    $sum_students=mysqli_query($conn,"SELECT COUNT(*) FROM student");
+    $sum_students=mysqli_fetch_column($sum_students);
+    $sum_payments=mysqli_query($conn,"SELECT SUM(Amount_paid) FROM payment");
+    $sum_payments=mysqli_fetch_column($sum_payments);
+    $sum_users=mysqli_query($conn,"SELECT COUNT(*) FROM user");
+    $sum_users=mysqli_fetch_column($sum_users);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +40,7 @@ $sum_payments->execute();
                     <i class="fas fa-graduation-cap fs-1 px-3 py-3" ></i>
                     <span class="px-3 py-3" >Students</span>
                     <div class="card-body">
-                      <p class="card-text text-end"><?php print_r($sum_students->fetchColumn()); ?></p>
+                      <p class="card-text text-end"><?php echo($sum_students) ?></p>
                     </div>
                 </div>
                 </div>
@@ -47,7 +49,7 @@ $sum_payments->execute();
                         <i class="fal fa-bookmark fs-1 px-3 py-3" ></i>
                         <span class="px-3 py-3">Course</span>
                         <div class="card-body">
-                          <p class="card-text text-end"><?php print_r($result->fetchColumn()); ?></p>
+                          <p class="card-text text-end"><?php echo($result) ?></p>
                         </div>
                     </div>
                     </div>
@@ -56,7 +58,7 @@ $sum_payments->execute();
                             <i class="fal fa-usd-square fs-1 px-3 py-3" ></i>
                             <span class="px-3 py-3" >Payments</a></span>
                             <div class="card-body">
-                              <p class="card-text text-end">Dhs<?php print_r($sum_payments->fetchColumn()); ?></p>
+                              <p class="card-text text-end">Dhs<?php echo($sum_payments) ?></p>
                             </div>
                         </div>
                         </div>
@@ -65,7 +67,7 @@ $sum_payments->execute();
                                 <i class="fal fa-user fs-1 px-3 py-3" ></i>
                                 <span class="px-3 py-3">Users</span>
                                 <div class="card-body">
-                                  <p class="card-text text-end">3</p>
+                                  <p class="card-text text-end"><?php echo($sum_users) ?></p>
                                 </div>
                             </div>
                             </div>

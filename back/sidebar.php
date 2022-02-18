@@ -1,10 +1,16 @@
+<?php
+         session_start();
+     if(!isset($_SESSION['username'])){
+         header('location:index.php');
+       }
+?>
 <div class="fond col-auto col-md-3 col-xl-2 px-sm-2 px-0 ">
                 <div class="d-flex flex-column align-items-center  px-3 pt-2 text-white min-vh-100">
                     <div class=" mb-3 d-flex justify-content-start">
                         <a class="navbar-brand text-black border-start border-3 border-info px-2 " href="#">E-Classe</a>
-                         </div>
+                    </div>
                         <img src="https://picsum.photos/70.jpg" alt="Profile"  class="rounded-circle"><br>
-                        
+                        <p class="text-dark fw-bolder mt-2"><?php echo $_SESSION['username'] ?></p>
                         <p class="text-info font-weight-bold">Admin</p>
                 <ul class="my-list nav nav-pills flex-column d-flex justify-content-end " id="menu">
                         <li  class="nav-item mb-2 ps-4"style="width:170px;">
@@ -35,7 +41,7 @@
                                 <i class="fal fa-sliders-v-square"></i></i> <span class="ms-1 d-none d-sm-inline">Settings</span> </a>
                         </li>
                         <li  class="nav-item mb-10 ps-4"style="width:170px;">
-                            <a href="index.php" class="nav-link px-0 align-middle text-dark ps-4">
+                            <a href="logout.php" class="nav-link px-0 align-middle text-dark ps-4">
                              <span class="ms-1 d-none d-sm-inline">Logout</span><i class="fas fa-sign-out-alt px-sm-2"></i> </a>
                         </li>
                 </ul>
