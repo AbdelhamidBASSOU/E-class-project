@@ -1,4 +1,14 @@
 <?php
+session_start();
+$timern=time()-$_SESSION ['time'];
+if($timern > 20){
+    session_start();
+    session_unset();
+    session_destroy();
+    header('location:index.php');
+}
+?>
+<?php
     require_once 'db_connnection.php';
    
     $result=mysqli_query($conn,"SELECT COUNT(*) FROM courses");
@@ -9,6 +19,7 @@
     $sum_payments=mysqli_fetch_column($sum_payments);
     $sum_users=mysqli_query($conn,"SELECT COUNT(*) FROM user");
     $sum_users=mysqli_fetch_column($sum_users);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

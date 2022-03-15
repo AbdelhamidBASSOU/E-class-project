@@ -12,10 +12,10 @@ require_once('db_connnection.php');
 		
 		
 		// Check connection
-		if($conn === false){
-			die("ERROR: Could not connect. "
-				. mysqli_connect_error());
-		}
+		//if($conn === false){
+		//	die("ERROR: Could not connect. "
+		//		. mysqli_connect_error());
+		//}
 		if(isset($_POST['submit']))
 		{
 		print_r($_FILES['img']);
