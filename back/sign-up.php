@@ -21,13 +21,17 @@ if(isset($_POST['submit']))
 					}
 					else
 					{	
+            
 						$query= "INSERT into user(username,email,password) values('$username','$email','$password')";
 						$query_run = mysqli_query($conn,$query);
 						
+            header("location: index.php");
+
 						if($query_run)
 						{
 							echo '<script type="text/javascript"> alert("User Registered.. Go to login page to login") </script>';
-						}
+              
+            }
 						else
 						{
 							echo '<script type="text/javascript"> alert("Error!") </script>';

@@ -29,7 +29,7 @@
       }
      
     else {
-      echo $name;
+      echo $message;
     }
     
       }
@@ -109,6 +109,7 @@
               <i class="bi bi-check-circle-fill"></i>
 			        <i class="bi bi-exclamation-circle-fill"></i>
               <small></small>
+              </div>
               <div class="form-check form-switch  mt-2 mb-2">
                 <input name="check" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
                 <label class="form-check-label" for="flexSwitchCheckChecked">Remember me</label>

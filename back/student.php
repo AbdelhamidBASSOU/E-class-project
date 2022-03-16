@@ -5,14 +5,38 @@ $result = mysqli_query($conn,"SELECT * FROM student");
 
 <?php
 if(isset($_GET['id'])){
-if(count($_POST)>0) {
-  mysqli_query($conn,"UPDATE student set img='" . $_POST['img'] . "', name='" . $_POST['name'] . "', email='" . $_POST['email'] . "' ,phone='" . $_POST['phone'] . "',enroll_number='".$_POST['enroll_number']. "' ,date_of_admission='" . $_POST['date_of_admission'] . "' WHERE id='" . $_POST['id'] . "'");
-    $message = "Record Modified Successfully";
+  $student = mysqli_query($conn,"SELECT * FROM student WHERE id='" . $_GET['id'] . "'");
+  $studentInfo = mysqli_fetch_array($student);
 }
-    $result = mysqli_query($conn,"SELECT * FROM student WHERE id='" . $_GET['id'] . "'");
-    $row= mysqli_fetch_array($result);
+
+  if(isset($_POST['update']) && count($_POST)>0){
+    mysqli_query($conn,"UPDATE student set img='" . $_POST['img'] . "', name='" . $_POST['name'] . "', email='" . $_POST['email'] . "' ,phone='" . $_POST['phone'] . "',enroll_number='".$_POST['enroll_number']. "' ,date_of_admission='" . $_POST['date_of_admission'] . "' WHERE id='" . $_POST['id'] . "'");
+    header("location: student.php");
   }
 ?>
+	<?php
+		
+		if(isset($_POST['submit']))
+		{
+		print_r($_FILES['img']);
+        
+		$img=$_FILES['img']['name'];
+		if(!file_exists('./img/')){
+			mkdir('./img/');
+		}
+		move_uploaded_file($_FILES['img']['tmp_name'],'./img/'.$_FILES['img']['name']);
+        $name = $_POST['name'];
+		$email = $_POST['email']; 
+		$phone = $_POST['phone'];
+		$enroll_number = $_POST['enroll_number'];
+		$date_of_admission = $_POST['date_of_admission'];
+        $sql = "INSERT INTO student (img,name,email,phone,enroll_number,date_of_admission) 
+		VALUES  ('$img','$name','$email','$phone','$enroll_number','$date_of_admission')";
+		mysqli_query($conn, $sql);
+		header('location:student.php');
+		}
+			?>
+      
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,13 +44,36 @@ if(count($_POST)>0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link href="Assets/bootstrap.min.css" rel="stylesheet">
-    <link href="Assets/Dashbord.css" rel="stylesheet">
+    <link href="./Assets/bootstrap.min.css" rel="stylesheet">
     <link href="Assets/student.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,700&display=swap" rel="stylesheet">
+    <link href="./Assets/Dashbord.css" rel="stylesheet">
+    <script src="./update.js" defer></script>
+    <script src="./add.js" defer></script>
+    
+
     <title>Students</title>
+    <style>
+      #exampleModal {
+        min-width: 400px;
+      }
+      #bgdark {
+        background-color: rgba(0, 0, 0, 0.7);
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: 1100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        display:none;
+      }
+    </style>
 </head>
 <main>
 <body>
@@ -45,7 +92,7 @@ if(count($_POST)>0) {
               <h5 class="fw-bolder d-none d-sm-block mx-3">Students List</h5>
               <div class="d-flex align-items-center">
               <i class="far fa-sort text-info far fs-6 fa-sort me-3  d-sm-block"></i>
-              <a href="addform.php" type="button" class="btn  bg-info text-white my-3">ADD NEW STUDENT</a>
+              <a href="?add" type="button" class="btn  bg-info text-white my-3" data-bs-toggle="modal" data-bs-target="#modalAddCours">ADD NEW STUDENT</a>
             </div>
             </div>
             <hr>
@@ -78,8 +125,8 @@ if(count($_POST)>0) {
                           <td><?php echo $row["enroll_number"]?></td>
                           <td><?php echo $row["date_of_admission"]?></td>
                           <td>                    
-                              <a href='?id=<?php echo $row['id']?>'><i class="fal fa-pen text-info"></i></a>
-                              <a href='delete.php?id=<?php echo $row['id']?>'><i class ="fal fa-trash text-info mx-1"></i></a>
+                              <a href='?id=<?php echo $row['id']?>'><i class="fal fa-pen text-info" data-bs-toggle="modal" data-bs-target="#bgdark"></i></a>
+                              <a href='delete.php?id=<?php echo $row['id']?>' onclick="myfunction()"><i class ="fal fa-trash text-info mx-1"></i></a>
                           </td> 
                       </tr>
                       <?php
@@ -96,71 +143,80 @@ if(count($_POST)>0) {
                 </div> 
               </div>
                 <!-- Modal -->
+                
 <div class="model" id="bgdark" >
+<?php
+                if(isset($_GET['id'])){
+                ?>
   <div class="modal-dialog" id="exampleModal">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Update</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
       <form name="frmUser" method="post" action="">
             <h1>Update</h1>
-            <fieldset>
-
-                  <div class="form-group">
+                <div class="form-group">
                    <label for="img">Entrez votre image</label>
-                   <input type="file" class="form-control" alt="profile picture"  name="img" value="<?php echo $row['img']?>">
-                 </div>  
-                 <div class="form-group">
-                   <label for="id">id</label>
-                   <input type="text" class="form-control" alt="id"  name="id" value="<?php echo $row['id']?>">
-                 </div>  
-                 <div class="form-group">
-                   <label for="name"> nom</label>
-                   <input type="text" class="form-control"  placeholder="Entrez votre nom" name="name" value="<?php echo $row['name']?>">
+                   <input type="file" class="form-control" alt="profile picture"  name="img" value="<?php echo isset($studentInfo) ? $studentInfo["img"] : "" ?>">
                  </div>
                  <div class="form-group">
-                   <label for="email"> email</label>
-                   <input type="email" class="form-control"  placeholder="user@email.com" name="email" value="<?php echo $row['email']?>">
+                   <label for="name">nom</label>
+                   <input type="text" class="form-control"  placeholder="Entrez votre nom" name="name" value="<?php echo isset($studentInfo) ? $studentInfo['name'] : ""?>">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">email</label>
+                    <input type="email" class="form-control"  placeholder="user@email.com" name="email" value="<?php echo isset($studentInfo) ? $studentInfo["email"] : ""?>">
+                  </div>
+                 <div class="form-group">
+                   <label for="phone">phone</label>
+                   <input type="text" class="form-control"  placeholder="123XXXXXXXXXX" name="phone" value="<?php echo isset($studentInfo) ? $studentInfo["phone"] : ""?>">
                  </div>
                  <div class="form-group">
-                   <label for="phone"> phone</label>
-                   <input type="text" class="form-control"  placeholder="123XXXXXXXXXX" name="phone" value="<?php echo $row['phone']?>">
-                 </div>
-                 <div class="form-group">
-                   <label for="enroll_number"> enroll number</label>
-                   <input type="text" class="form-control"  placeholder="123XXXXXXXXXX" name="enroll_number" value="<?php echo $row['enroll_number']?>">
+                   <label for="enroll_number">enroll number</label>
+                   <input type="text" class="form-control"  placeholder="123XXXXXXXXXX" name="enroll_number" value="<?= isset($studentInfo) ? $studentInfo["enroll_number"] : ""?>">
                  </div>
                  <div class="form-group">
                    <label for="date_of_admission"> date d'admission</label>
-                   <input type="date" class="form-control"  placeholder="123XXXXXXXXXX" name="date_of_admission" value="<?php echo $row['date_of_admission']?>">
-                 </div>
-
-              <input id="submit"
-                 class="btn btn-info my-3 px-5" type="submit"
-                        name="submit" value="submit"
-                        onclick="on_submit()"> 
-
-            </fieldset>
-          </form>
+                   <input type="date" class="form-control"  placeholder="123XXXXXXXXXX" name="date_of_admission" value="<?= isset($studentInfo) ? $studentInfo["date_of_admission"] : ""?>">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close">Close</button>
+                    <input type="submit" name="update" class="btn btn-primary" value="Update">
+                    <input type="hidden" name="id" value="<?= isset($_GET['id']) ? $_GET["id"] : ""?>">
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+     
+        <?php
+                }
+                ?>
+        <?php
+          if(!isset($_GET['id'])){
+          include 'addmodal.php' ;
+          }
+          ?>
+      
+         
+          
+         
+          
+         
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-     </div> 
-              
- 
     
- 
+      <script>
+
+        function myfunction(){
+          confirm("are you sure?");
+        }
+      </script> 
 
 
 
-<script src="/Assets/bootstrap.bundle.min.js" ></script>   
+
+
+<script src="/Assets/bootstrap.bundle.min.js" ></script> 
 </body>
-                  </main>
 </html>
