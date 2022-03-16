@@ -25,15 +25,17 @@
    
         $_SESSION["username"]=$row['username'];
         $_SESSION["password"]=$row['password'];
+        header("Location:dashbord.php");
       }
      
     else {
       echo $name;
     }
+    
       }
-    if(isset($_SESSION["username"])) {
-         header("Location:dashbord.php");
-      }
+    // if(isset($_SESSION["username"])) {
+    //      header("Location:dashbord.php");
+    //   }
   ?>
 
 
@@ -44,7 +46,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="Assets/bootstrap.min.css" rel="stylesheet" />
-    <link href="Assets/sign-in.css" rel="stylesheet" />
+    <link href="Assets/signin.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" integrity="sha512-Oy+sz5W86PK0ZIkawrG0iv7XwWhYecM3exvUtMKNJMekGFJtVAhibhRPTpmyTj8+lJCkmWfnpxKgT2OopquBHA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -130,7 +132,7 @@
       </div>
     </div>
     <script src="/Assets/bootstrap.bundle.min.js"></script>
-    <script src="sign-invalidation.js"></script>
+    <script src="signinvalidation.js"></script>
 
   </body>
 </html>

@@ -1,8 +1,15 @@
 <?php
-         //session_start();
+         session_start();
      if(!isset($_SESSION['username'])){
          header('location:index.php');
        }
+       $timern=time()-$_SESSION ['time'];
+        if($timern > 30*60){
+            // session_start();
+            // session_unset();
+            // session_destroy();
+            header('location:logout.php');
+        }
 ?>
 <div class="fond col-auto col-md-3 col-xl-2 px-sm-2 px-0 ">
                 <div class="d-flex flex-column align-items-center  px-3 pt-2 text-white min-vh-100">

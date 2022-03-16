@@ -1,13 +1,4 @@
-<?php
-session_start();
-$timern=time()-$_SESSION ['time'];
-if($timern > 20){
-    session_start();
-    session_unset();
-    session_destroy();
-    header('location:index.php');
-}
-?>
+
 <?php
     require_once 'db_connnection.php';
    

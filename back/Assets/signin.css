@@ -47,9 +47,7 @@ label {
   border-color: #777;
 }
 
-.form-controll.success input {
-  border-color: #2ecc71;
-}
+
 
 .form-controll.error input {
   border-color: #e74c3c;
